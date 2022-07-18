@@ -12,42 +12,73 @@
                 const computerSelection = Math.floor(Math.random()*3)
                 switch(computerSelection) {
                     case 0:
-                        return("Rock");
+                        return("rock");
                         break;
                     case 1:
-                        return("Paper");
+                        return("paper");
                         break;
                     case 2:
-                        return("Scissors");
+                        return("scissors");
                         break;
                     default:
                         return("Something went wrong")
                 }
             }
-            const computerSelection = getComputerChoice();
-            const playerSelection = prompt("Rock, Paper or Scissors?");
+            let x = 0;
+            let y = 0;
+            let z = 0;
 
             function playRound (computerSelection, playerSelection) {
-                if (playerSelection === "Rock" && computerSelection === "Paper") {
+                if (playerSelection === "rock" && computerSelection === "paper") {
+                    y++;
                     alert("You lose, Paper beats Rock")
-                } else if (playerSelection === "Rock" && computerSelection === "Scissors") {
+                } else if (playerSelection === "rock" && computerSelection === "scissors") {
+                    x++;
                     alert("You win!!! Rock beats Scissors")
-                } else if (playerSelection === "Paper" && computerSelection === "Scissors") {
+                } else if (playerSelection === "paper" && computerSelection === "scissors") {
+                    y++;
                     alert("You lose, Scissors beats Paper")
-                } else if (playerSelection === "Paper" && computerSelection === "Rock") {
+                } else if (playerSelection === "paper" && computerSelection === "rock") {
+                    x++;
                     alert("You win!!! Paper beats Rock")
-                } else if (playerSelection === "Scissors" && computerSelection === "Rock") {
+                } else if (playerSelection === "scissors" && computerSelection === "rock") {
+                    y++;
                     alert("You lose, Rock beats Scissors")
-                } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+                } else if (playerSelection === "scissors" && computerSelection === "paper") {
+                    x++;
                     alert("You win!!! Scissors beats paper")
                 } else if (playerSelection === computerSelection) {
+                    z++;
                     alert("A tie!!")
                 } else {
                     alert("Something went wrong")
                 }
             }
-            playRound (computerSelection, playerSelection)
-
+            function game() {
+                for (let i = 0; i < 5; i++) {
+                    const computerSelection = getComputerChoice();
+                    const playerAnyCase = prompt("Rock, Paper or Scissors?");
+                    const playerSelection = playerAnyCase.toLowerCase();
+                    playRound (computerSelection, playerSelection);
+                }
+                if (x > y) {
+                    let winMessage = 
+                    `Computer: ${y}\nYou: ${x}\nTie: ${z}\nCongratulations, You won!!! Do you wanna try again?`;
+                    alert(winMessage);
+                } else if (y > x) {
+                    let loseMessage = 
+                    `Computer: ${y}\nYou: ${x}\nTie: ${z}\nSorry man, you lost, but you can always try again`;
+                    alert(loseMessage);
+                } else {
+                    let drawMessage = 
+                    `Computer: ${y}\nYou: ${x}\nTie: ${z}\nIt's a tie, would you like to play again?`;
+                    alert(drawMessage);
+                }
+            }
+            game();
+            
+            
+            
         </script>
     </body>
 </html>
