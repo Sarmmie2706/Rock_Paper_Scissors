@@ -12,20 +12,41 @@
                 const computerSelection = Math.floor(Math.random()*3)
                 switch(computerSelection) {
                     case 0:
-                        console.log("Rock");
+                        return("Rock");
                         break;
                     case 1:
-                        console.log("Paper");
+                        return("Paper");
                         break;
                     case 2:
-                        console.log("Scissors");
+                        return("Scissors");
                         break;
                     default:
-                        console.log("Something went wrong")
+                        return("Something went wrong")
                 }
             }
-            
+            const computerSelection = getComputerChoice();
+            const playerSelection = prompt("Rock, Paper or Scissors?");
 
+            function playRound (computerSelection, playerSelection) {
+                if (playerSelection === "Rock" && computerSelection === "Paper") {
+                    alert("You lose, Paper beats Rock")
+                } else if (playerSelection === "Rock" && computerSelection === "Scissors") {
+                    alert("You win!!! Rock beats Scissors")
+                } else if (playerSelection === "Paper" && computerSelection === "Scissors") {
+                    alert("You lose, Scissors beats Paper")
+                } else if (playerSelection === "Paper" && computerSelection === "Rock") {
+                    alert("You win!!! Paper beats Rock")
+                } else if (playerSelection === "Scissors" && computerSelection === "Rock") {
+                    alert("You lose, Rock beats Scissors")
+                } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+                    alert("You win!!! Scissors beats paper")
+                } else if (playerSelection === computerSelection) {
+                    alert("A tie!!")
+                } else {
+                    alert("Something went wrong")
+                }
+            }
+            playRound (computerSelection, playerSelection)
 
         </script>
     </body>
